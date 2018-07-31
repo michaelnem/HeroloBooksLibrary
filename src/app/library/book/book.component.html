@@ -1,0 +1,23 @@
+<div class="card">
+    <div class="card-header">
+      {{ book.title }}
+    </div>
+    <div class="card-block">
+        <!-- <div class="progress top">
+            <progress value="..." max="100"></progress>
+        </div> -->
+        id: {{ book.id }}
+        <p class="card-text">{{ book.author }}</p>
+        <p class="card-text">{{ book.published }}</p>
+    </div>
+    <div class="card-footer btn-group btn-primary clr-row">
+        <button class="btn btn-sm btn-link clr-col-6">
+          <clr-icon shape="pencil" class="is-solid"></clr-icon>
+          EDIT
+        </button>
+        <button class="btn btn-sm btn-link clr-col danger">
+          <clr-icon shape="trash" class="is-solid"></clr-icon>
+          Delete
+        </button>
+    </div>
+</div>

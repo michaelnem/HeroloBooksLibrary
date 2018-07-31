@@ -1,0 +1,12 @@
+
+.danger {
+    color: #e62700;
+}
+
+.danger:hover {
+    color: #e62700;
+}
+
+.warning {
+    color: #f0ad4e;
+}

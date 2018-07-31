@@ -1,0 +1,22 @@
+
+
+.add-btn {
+    cursor: pointer;
+    background: 0 0;
+    border: 0;
+    color: #fafafa;
+    opacity: .65;
+}
+
+
+.sticky-top {
+    position:   fixed;
+    top:        0;
+    width: 100%;
+    z-index: 1;
+}
+
+.fix-sticky {
+    height: 2.5rem;
+}
+

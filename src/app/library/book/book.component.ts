@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+
 import { Book } from '../../models/book';
+import { HerroloLibraryService } from '../services/herrolo-library.service';
 
 @Component({
   selector: 'app-book',
@@ -9,9 +11,12 @@ import { Book } from '../../models/book';
 export class BookComponent implements OnInit {
   @Input() book: Book;
 
-  constructor() { }
+  constructor(private heroloLibrary: HerroloLibraryService) { }
 
   ngOnInit() {
   }
 
+  toggleModal(modal: string): void {
+    this.heroloLibrary.createModal(modal, this.book);
+  }
 }

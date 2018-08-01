@@ -1,0 +1,20 @@
+<div class="modal">
+  <div class="modal-dialog modal-xl" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+      <div class="modal-header" >
+        <h3 class="modal-title"><b>Editing:</b> {{book.title}}</h3>
+      </div>
+      <div class="modal-body">
+        <form>
+          <input type="text">
+          <input type="date" clrDate>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" (click)="closeModal()">CANCEL</button>
+        <button class="btn btn-warning" (click)="deleteBook()">DELETE</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-backdrop" aria-hidden="true"></div>

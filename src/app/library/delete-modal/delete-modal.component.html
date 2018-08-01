@@ -1,0 +1,22 @@
+<div class="modal">
+  <div class="modal-dialog modal-lg" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button aria-label="Close" class="close" (click)="closeModal()">
+          <clr-icon aria-hidden="true" shape="close"></clr-icon>
+        </button>
+        <h3 class="modal-title">Are you sure?</h3>
+      </div>
+      <div class="modal-body">
+        <p>
+          <b>delete the title:</b> {{ book.title }} ? <br>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" (click)="closeModal()">CANCEL</button>
+        <button class="btn btn-warning" (click)="deleteBook()">DELETE</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-backdrop" aria-hidden="true"></div>

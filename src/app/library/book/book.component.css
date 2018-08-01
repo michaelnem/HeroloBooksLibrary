@@ -4,9 +4,13 @@
 }
 
 .danger:hover {
-    color: #e62700;
+    color: #c92100;
 }
 
 .warning {
     color: #f0ad4e;
+}
+
+.key {
+    font-weight: bold;
 }

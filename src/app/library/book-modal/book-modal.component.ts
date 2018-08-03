@@ -16,7 +16,7 @@ import { Book } from '../../models/book';
 export class BookModalComponent implements OnInit {
   readonly booksNames: Array<string>;
   @Input() mode: Book;
-  @Input() private book: Book;
+  @Input() book: Book;
   tempBook: Book;
 
   submitted: boolean = false;

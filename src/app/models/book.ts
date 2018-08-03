@@ -1,6 +1,6 @@
 export interface Book {
     readonly id:    string;
-    author:         Array<string>;
+    author:         string;
     title:          string;
     published:      string;
 }

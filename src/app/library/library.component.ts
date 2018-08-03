@@ -4,7 +4,7 @@ import { HerroloLibraryService } from './services/herrolo-library.service';
 import { ModalDirective } from './directives/modal.directive';
 
 import { Book } from '../models/book';
-import { EditModalComponent } from './edit-modal/edit-modal.component';
+import { BookModalComponent } from './book-modal/book-modal.component';
 import { DeleteModalComponent } from './delete-modal/delete-modal.component';
 
 @Component({
@@ -38,9 +38,10 @@ export class LibraryComponent implements OnInit {
   // Injecting dynamic modal to DOM
   injectModal(modal: string, book: Book): void {
     let factory;
+    
     switch (modal) {
-      case 'EDIT': {
-        factory = this.cfr.resolveComponentFactory(EditModalComponent);
+      case 'EDIT': case 'NEW': {
+        factory = this.cfr.resolveComponentFactory(BookModalComponent);
         break;
       }
       case 'DELETE': {
@@ -49,10 +50,12 @@ export class LibraryComponent implements OnInit {
       }
       default: break;
     }
-    this.hostModalRefrence.clear();
 
+    this.hostModalRefrence.clear();
     const modalRef = this.hostModalRefrence.createComponent(factory);
+
     (modalRef.instance)['book'] = book;
+    (modalRef.instance)['mode'] = modal;
   }
 
   // clear dynamic modal form DOM

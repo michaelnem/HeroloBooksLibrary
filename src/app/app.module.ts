@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpConnectionService } from './Services/http-connection.service';
 import { LibraryModule } from './library/library.module';
 import { HeaderComponent } from './layout/header/header.component';
+import { HerroloLibraryService } from './library/services/herrolo-library.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { HeaderComponent } from './layout/header/header.component';
     HttpClientModule,
     LibraryModule
   ],
-  providers: [ HttpConnectionService ],
+  providers: [ HttpConnectionService, HerroloLibraryService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'titleformat'
 })
 export class TitleformatPipe implements PipeTransform {
-  private pattern = /\w+/g;
+  private pattern: RegExp = /\w+/g;
 
   transform(value: string, args?: any): any {
     value = value.toLocaleLowerCase();

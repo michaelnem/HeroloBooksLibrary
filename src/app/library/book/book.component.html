@@ -8,7 +8,7 @@
         <span class="key">id:</span> {{ book.id }}
         <p class="card-text">
             <span class="key">Author:</span> {{ book.author }} <br>
-            <span class="key">Published Date:</span> {{ book.published }}
+            <span class="key">Published Date:</span> {{ book.published | date: 'd/M/yyyy'}}
         </p>
     </div>
     <div class="card-footer btn-group btn-primary clr-row">

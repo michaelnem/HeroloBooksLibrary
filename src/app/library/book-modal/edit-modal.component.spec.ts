@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditModalComponent } from './edit-modal.component';
+import { EditModalComponent } from './book-modal.component';
 
 describe('EditModalComponent', () => {
   let component: EditModalComponent;

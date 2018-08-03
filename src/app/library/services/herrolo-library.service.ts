@@ -26,8 +26,45 @@ export class HerroloLibraryService {
         this.books = booksRes;
         this.booksSource.next(this.books);
         this.setSpinnerState(false);
+      },
+      err => {
+        console.error(err);
+        this.setSpinnerState(false);
       }
     );
+  }
+
+  getBooksName(): Array<string> {
+    return this.books.map(book => book.title);
+  }
+
+  newBook(book: Book): void {
+    this.setSpinnerState(true);
+    this.books.push({
+      id: this.conn.id_picker(),
+      title: book.title,
+      author: book.author,
+      published: book.published
+    });
+    this.destroyModal();
+    setTimeout(() => {
+      this.setSpinnerState(false);
+    }, 200);
+  }
+
+  editBook(targetBook: Book): void {
+    this.setSpinnerState(true);
+    const index = this.books.findIndex(sourceBook => {
+      return sourceBook.id ===  targetBook.id;
+    });
+    if (index >= 0) {
+      this.books[index] = targetBook;
+      this.booksSource.next(this.books);
+    }
+    this.destroyModal();
+    setTimeout(() => {
+      this.setSpinnerState(false);
+    }, 200);
   }
 
   deleteBook(id: string): void {
@@ -35,7 +72,7 @@ export class HerroloLibraryService {
     const index = this.books.findIndex(book => {
       return book.id ===  id;
     });
-    if (index > 0) {
+    if (index >= 0) {
       this.books.splice(index, 1);
       this.booksSource.next(this.books);
     }

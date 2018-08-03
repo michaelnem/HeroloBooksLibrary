@@ -1,4 +1,5 @@
 import { Component, OnInit/*, HostListener, Inject*/ } from '@angular/core';
+import { HerroloLibraryService } from '../../library/services/herrolo-library.service';
 // import { DOCUMENT } from '@angular/platform-browser';
 
 @Component({
@@ -6,17 +7,11 @@ import { Component, OnInit/*, HostListener, Inject*/ } from '@angular/core';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   stick: boolean = false;
 
-constructor(/*@Inject(DOCUMENT) private document: Document*/) { }
-
-  ngOnInit() {
+  constructor(private heroloLib: HerroloLibraryService) { }
+  newBook(): void {
+    this.heroloLib.createModal('NEW', null);
   }
-
-  // @HostListener('window:scroll', [])
-  // onWindowScroll() {
-  //   const topGape =  this.document.documentElement.scrollTop || this.document.body.scrollTop || 0;
-  //   this.stick = topGape > 0 ? true : false;
-  // }
 }

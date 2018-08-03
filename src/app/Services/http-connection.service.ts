@@ -17,6 +17,7 @@ export class HttpConnectionService {
   private booksAmount:          number = 34;
   private books:                Array<Book>;
   private type:                 string = 'books';
+  private idPicker = 1;
 
   constructor(private http: HttpClient) { }
 
@@ -28,16 +29,22 @@ export class HttpConnectionService {
         this.books = [];
         res['items'].forEach(book => {
           if (book['volumeInfo']['publishedDate'] && book['volumeInfo']['authors']) {
-            this.books.push({ id:         book['id'],
-                              author:     book['volumeInfo']['authors'],
+            const date = new Date(book['volumeInfo']['publishedDate']);
+            this.books.push({ id:         this.id_picker(),
+                              author:     book['volumeInfo']['authors'][0],
                               title:      book['volumeInfo']['title'],
-                              published:  book['volumeInfo']['publishedDate']});
+                              published:  date.toISOString().slice(0, 10) });
+                              // date.getFullYear() + '-' + date.getMonth() + '-' + date.getDay()
           }
         });
         return this.books;
       }),
       catchError(this.handleError('getBooks', []))
     );
+  }
+
+  id_picker(): string {
+    return '' + this.idPicker++;
   }
 
   private handleError<T> (operation = 'operation', result?: T) {

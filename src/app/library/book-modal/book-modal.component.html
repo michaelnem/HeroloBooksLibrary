@@ -1,0 +1,68 @@
+<div class="modal">
+  <div class="modal-dialog modal-md" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" *ngIf="book.title">
+          <b>Editing Title:</b> {{book.title}}
+        </h3>
+        <h3 class="modal-title" *ngIf="!book.title">
+          <b>New Book</b>
+        </h3>
+      </div>
+      <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+        <div class="modal-body">
+          <div *ngIf="bookForm.invalid && (bookForm.dirty || bookForm.touched)" class="alert alert-danger">
+            <div class="alert-items">
+              <div class="alert-item static" *ngIf="title.invalid">
+                <div class="alert-icon-wrapper">
+                  <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+                </div>
+                <span class="alert-text" *ngIf="title.errors.required">
+                  Title is empty.
+                </span>
+                <span class="alert-text" *ngIf="title.errors.titleExist">
+                  Title <b>{{title.errors.titleExist.value}}</b> is already exists
+                </span>
+              </div>
+              <div class="alert-item static" *ngIf="author.invalid">
+                <div class="alert-icon-wrapper">
+                  <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+                </div>
+                <span class="alert-text">Author name is empty.</span>
+              </div>
+              <div class="alert-item static" *ngIf="published.invalid">
+                <div class="alert-icon-wrapper">
+                  <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+                </div>
+                <span class="alert-text">Published Date is not valid (Latest valid date - {{ today | date : 'd/M/yy' }}).</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input id="title" type="text" class="from-control"
+                  formControlName="title"
+                  placeholder="{{book.title}}" >
+          </div>
+
+          <div class="form-group">
+            <label for="author">Author Name</label>
+            <input id="author" type="text" class="from-control"
+                  placeholder="{{book.author}}" formControlName="author">
+          </div>
+
+          <div class="form-group">
+            <label for="published">Published Date</label>
+            <input id="published" type="date" class="from-control"
+                  placeholder="{{book.published}}" formControlName="published">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-outline">CANCEL</button>
+          <button type="submit" class="btn btn-primary" (click)="submitted=true" [disabled]="!bookForm.valid">{{mode}}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="modal-backdrop" aria-hidden="true"></div>

@@ -1,33 +1,37 @@
 import { NgModule } from '@angular/core';
 import { HerroloLibraryService } from './services/herrolo-library.service';
+import { ClrIconModule } from '@clr/angular';
+
 import { CommonModule } from '@angular/common';
 
 import { LibraryComponent } from './library.component';
 import { BookComponent } from './book/book.component';
-import { ClrIconModule } from '../../../node_modules/@clr/angular';
 import { DeleteModalComponent } from './delete-modal/delete-modal.component';
-import { EditModalComponent } from './edit-modal/edit-modal.component';
 import { ModalDirective } from './directives/modal.directive';
-import { NewBookModalComponent } from './new-book-modal/new-book-modal.component';
 import { TitleformatPipe } from './pipes/titleformat.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BookModalComponent } from './book-modal/book-modal.component';
 
 @NgModule({
-  imports: [CommonModule, ClrIconModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ClrIconModule,
+  ],
   exports: [LibraryComponent],
   declarations: [
     LibraryComponent,
     BookComponent,
     DeleteModalComponent,
-    EditModalComponent,
-    NewBookModalComponent,
+    BookModalComponent,
     ModalDirective,
     TitleformatPipe
   ],
-  providers: [HerroloLibraryService],
+  providers: [],
   entryComponents: [
-    EditModalComponent,
-    DeleteModalComponent,
-    NewBookModalComponent
+    BookModalComponent,
+    DeleteModalComponent
   ]
 })
 export class LibraryModule { }
